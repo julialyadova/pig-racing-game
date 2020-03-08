@@ -8,7 +8,7 @@ var betsOpen = true;
 var bet = 0;
 
 var pigFrame = 0;
-var pigsXs = {0: 0, 1: 0,2: 0,3: 0};
+var pigsXs = {0: 0, 1: 0,2: 0,3: 0, 4: 0};
 
 function loadImages(sources, callback)
 {
@@ -45,7 +45,7 @@ function endRace(winner)
     pause = true;
     betsOpen = true;
     bet = null;
-    pigsXs = {0: 0, 1: 0,2: 0,3: 0};
+    pigsXs = {0: 0, 1: 0,2: 0,3: 0, 4: 0};
 }
 
   var sources = 
@@ -91,6 +91,10 @@ document.addEventListener('keydown', function(event)
     {
         bet = 3;
         pause = false;
+    }else if(event.code == 'Digit5') 
+    {
+        bet = 4;
+        pause = false;
     }
   });
 document.addEventListener("DOMContentLoaded", function ()
@@ -104,7 +108,7 @@ document.addEventListener("DOMContentLoaded", function ()
 
     //шрифты
     context.font = "12px Arial";
-    context.fillStyle = "#84ffff";
+    context.fillStyle = "#F88A09";
     context.textAlign = "center";
 
 
@@ -124,7 +128,7 @@ document.addEventListener("DOMContentLoaded", function ()
 
             //отрисовка свиней перед началом гонки
             if (betsOpen){
-              for(var n = 0; n < 4; n++)
+              for(var n = 0; n < 5; n++)
               {   
                   context.drawImage(images.pig, pigsXs[n], n * scaleSqr, scaleSqr * 1.5, scaleSqr);
                   if (n == bet)
@@ -142,7 +146,7 @@ document.addEventListener("DOMContentLoaded", function ()
             }
 
             //отрисовка свиней
-            for(var n = 0; n < 4; n++)
+            for(var n = 0; n < 5; n++)
             {   
                 context.drawImage(images[pigFrame], pigsXs[n], n * scaleSqr, scaleSqr * 1.5, scaleSqr);
 
